@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Niet · links</title>
+<meta name="description" content="Niet, o pit de 60 kg do stand-up canino. Entra na comunidade Fala, Niet!, conhece a lojinha e fala com a gente sobre parcerias.">
+<meta name="theme-color" content="#140A08">
+<meta property="og:title" content="Niet · stand-up canino">
+<meta property="og:description" content="Entra na comunidade Fala, Niet! no app Amor de Cão.">
+<meta property="og:image" content="https://amordecao2026.github.io/niet/img/niet-microfone.jpg">
+<meta property="og:url" content="https://amordecao2026.github.io/niet/">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --palco: #140A08;
+    --palco-2: #1E0F0B;
+    --cortina: #A3161A;
+    --luz: #F5C04A;
+    --creme: #F2E8CC;
+    --creme-suave: rgba(242, 232, 204, .72);
+    --linha: rgba(242, 232, 204, .14);
+    --limao: #99BD05;
+    --verde: #236130;
+    --rosa: #DF3890;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--palco);
+    color: var(--creme);
+    font-family: "Figtree", system-ui, -apple-system, sans-serif;
+    line-height: 1.45;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+  .pagina { max-width: 440px; margin: 0 auto; padding-bottom: 40px; }
+
+  /* Faixa de prévia */
+  .previa {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--luz); color: var(--palco);
+    font-size: 12px; font-weight: 700; letter-spacing: .04em;
+    text-align: center; padding: 7px 16px;
+  }
+
+  /* Abertura: o Niet no palco */
+  .palco { position: relative; }
+  .palco img {
+    display: block; width: 100%; height: 470px;
+    object-fit: cover; object-position: 50% 18%;
+  }
+  .palco::after {
+    content: ""; position: absolute; inset: 0;
+    bottom: -2px;
+    background: linear-gradient(180deg, rgba(20,10,8,0) 42%, rgba(20,10,8,.78) 72%, var(--palco) 94%);
+  }
+  .letreiro {
+    position: relative; z-index: 1;
+    margin-top: -150px; padding: 0 20px; text-align: center;
+  }
+  .lampadas {
+    display: flex; justify-content: center; gap: 9px; margin-bottom: 10px;
+  }
+  .lampadas i {
+    width: 7px; height: 7px; border-radius: 50%; background: var(--luz);
+    animation: pisca 1.6s infinite ease-in-out;
+  }
+  .lampadas i:nth-child(even) { animation-delay: .8s; }
+  @keyframes pisca { 0%, 100% { opacity: 1; } 50% { opacity: .25; } }
+  @media (prefers-reduced-motion: reduce) { .lampadas i { animation: none; } }
+  h1 {
+    font-family: "Anton", Impact, sans-serif; font-weight: 400;
+    font-size: 88px; line-height: .9; letter-spacing: .02em;
+    text-transform: uppercase; color: var(--creme);
+  }
+  .subtitulo { margin-top: 10px; font-size: 16px; font-weight: 600; color: var(--creme); }
+  .arroba {
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-top: 6px; font-size: 14px; color: var(--creme-suave);
+  }
+  .arroba svg { width: 16px; height: 16px; }
+
+  /* Chamada principal: comunidade */
+  .comunidade { padding: 28px 20px 8px; }
+  .botao-principal {
+    display: block; width: 100%;
+    background: var(--limao); color: var(--palco);
+    border-radius: 999px; padding: 18px 22px; text-align: center;
+    font-size: 18px; font-weight: 800; letter-spacing: -.01em;
+    transition: transform .15s ease;
+  }
+  .botao-principal:active { transform: scale(.98); }
+  .botao-principal small {
+    display: block; margin-top: 2px; font-size: 13px; font-weight: 600; opacity: .8;
+  }
+  .plateia { margin-top: 22px; }
+  .plateia p { margin-top: 12px; font-size: 15px; color: var(--creme-suave); }
+  .plateia strong { color: var(--creme); }
+
+  /* Vídeo da chamada: capa com play; toca com som só quando a pessoa toca */
+  .chamada {
+    position: relative; width: 100%; aspect-ratio: 9 / 16;
+    border-radius: 22px; overflow: hidden; background: var(--palco-2);
+  }
+  .chamada video { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .chamada .tocar {
+    position: absolute; inset: 0; width: 100%; border: 0; cursor: pointer;
+    background: linear-gradient(180deg, rgba(20,10,8,0) 55%, rgba(20,10,8,.7) 100%);
+    display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
+    gap: 10px; padding-bottom: 26px; color: var(--creme); font: inherit;
+  }
+  .chamada .tocar .bola {
+    width: 74px; height: 74px; border-radius: 50%; background: var(--limao);
+    display: grid; place-items: center;
+  }
+  .chamada .tocar .bola svg { width: 30px; height: 30px; margin-left: 4px; }
+  .chamada .tocar span { font-size: 15px; font-weight: 700; }
+  .chamada.tocando .tocar { display: none; }
+  .botao-limao {
+    display: block; margin-top: 16px; border-radius: 999px; padding: 15px 20px;
+    text-align: center; font-size: 16px; font-weight: 800;
+    border: 1.5px solid var(--limao); color: var(--limao);
+  }
+
+  /* Blocos de seção */
+  section.bloco { padding: 34px 20px 0; }
+  h2 {
+    font-family: "Anton", Impact, sans-serif; font-weight: 400;
+    font-size: 30px; line-height: 1; text-transform: uppercase; letter-spacing: .02em;
+  }
+  .bloco > p.intro { margin-top: 8px; font-size: 15px; color: var(--creme-suave); }
+
+  /* Episódio em destaque */
+  .destaque {
+    display: flex; align-items: center; gap: 14px;
+    margin-top: 16px; padding: 14px 0; border-top: 1px solid var(--linha); border-bottom: 1px solid var(--linha);
+  }
+  .destaque .play {
+    flex: none; width: 46px; height: 46px; border-radius: 50%;
+    background: var(--cortina); display: grid; place-items: center;
+  }
+  .destaque .play svg { width: 18px; height: 18px; margin-left: 3px; }
+  .destaque b { display: block; font-size: 16px; color: var(--creme); }
+  .destaque .linha-fina { display: block; font-size: 14px; color: var(--creme-suave); }
+
+  /* Lojinha */
+  .produtos { margin-top: 14px; list-style: none; }
+  .produtos li { border-top: 1px solid var(--linha); }
+  .produtos li:last-child { border-bottom: 1px solid var(--linha); }
+  .produtos a { display: flex; align-items: center; gap: 14px; padding: 15px 0; }
+  .produtos .icone {
+    flex: none; width: 34px; display: grid; place-items: center; color: var(--luz);
+  }
+  .produtos .icone svg { width: 26px; height: 26px; }
+  .produtos .texto { flex: 1; min-width: 0; }
+  .produtos b { display: block; font-size: 16px; }
+  .produtos em { display: block; font-style: normal; font-size: 14px; color: var(--creme-suave); }
+  .produtos .loja {
+    flex: none; font-size: 12px; font-weight: 700; color: var(--luz);
+    display: inline-flex; align-items: center; gap: 4px;
+  }
+  .aviso-afiliado { margin-top: 12px; font-size: 12px; color: var(--creme-suave); }
+
+  /* Parcerias */
+  .botoes { display: grid; gap: 10px; margin-top: 16px; }
+  .botao {
+    display: flex; justify-content: center; align-items: center; gap: 8px;
+    border-radius: 999px; padding: 15px 20px; font-size: 16px; font-weight: 700;
+    border: 1.5px solid var(--creme); color: var(--creme);
+  }
+  .botao.cheio { background: var(--creme); color: var(--palco); }
+  .botao .breve { font-size: 12px; font-weight: 600; opacity: .7; }
+
+  /* Rodapé */
+  footer { padding: 44px 20px 0; text-align: center; }
+  footer img { width: 132px; height: auto; display: block; margin: 0 auto; }
+  footer p { margin-top: 12px; font-size: 13px; color: var(--creme-suave); }
+  footer .pequeno { margin-top: 18px; font-size: 11px; opacity: .6; }
+
+  a[data-pendente] { position: relative; }
+</style>
+</head>
+<body>
+
+<main class="pagina">
+
+  <header>
+    <div class="palco">
+      <img src="img/niet-microfone.jpg" alt="O Niet, um pit bull marrom com o peito branco, em pé no palco segurando o microfone, com cortina de veludo vermelho atrás">
+    </div>
+    <div class="letreiro">
+      <div class="lampadas" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <h1>Niet</h1>
+      <p class="subtitulo">Pit de 60 kg fazendo stand-up da vida com humano.</p>
+      <a class="arroba" href="https://www.instagram.com/amordeniet/">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        @amordeniet
+      </a>
+    </div>
+  </header>
+
+  <!-- 1. Comunidade: o motivo principal da página -->
+  <section class="comunidade" aria-labelledby="t-comunidade">
+    <a class="botao-principal" href="https://www.amordecao.com.br/comunidade/8283c8f0-a9f9-499a-838f-7637f11a5d1d?utm_source=influenciador&amp;utm_medium=botao&amp;utm_campaign=niet-pagina" id="t-comunidade">
+      Entra na comunidade Fala, Niet!
+      <small>No app Amor de Cão. É de graça.</small>
+    </a>
+    <div class="plateia">
+      <div class="chamada" id="chamada">
+        <video src="video/chamada-fala-niet.mp4" poster="img/chamada-capa.jpg" preload="none" playsinline controls
+               aria-label="O Niet convida para a comunidade Fala, Niet!, com legenda"></video>
+        <button class="tocar" type="button" aria-label="Tocar o vídeo do Niet">
+          <span class="bola" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#140A08"><path d="M7 4.5v15l13-7.5z"/></svg></span>
+          <span>Dá o play: o Niet explica</span>
+        </button>
+      </div>
+      <p><strong>Lá a plateia também sobe no palco.</strong> Conta a história mais absurda que tu já viveu com teu cachorro, ri das dos outros e vê os episódios antes de todo mundo.</p>
+      <a class="botao-limao" href="https://www.amordecao.com.br/comunidade/8283c8f0-a9f9-499a-838f-7637f11a5d1d?utm_source=influenciador&amp;utm_medium=botao&amp;utm_campaign=niet-pagina">Bora, quero entrar</a>
+    </div>
+  </section>
+
+  <!-- 2. Episódio em destaque -->
+  <section class="bloco" aria-labelledby="t-destaque">
+    <h2 id="t-destaque">O que bombou</h2>
+    <a class="destaque" href="https://www.instagram.com/reel/DgCxLgouAOo/">
+      <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#F2E8CC"><path d="M7 4.5v15l13-7.5z"/></svg></span>
+      <span>
+        <b>Levei meu dono pra adestrar</b>
+        <span class="linha-fina">Quem saiu com dever de casa foi ele.</span>
+      </span>
+    </a>
+  </section>
+
+  <!-- 3. Lojinha com links de afiliado — ESCONDIDA até definir os produtos e programas (pedido do usuário, 23/11/2026).
+       Para mostrar de novo, é só apagar o atributo "hidden" abaixo. -->
+  <section class="bloco" aria-labelledby="t-lojinha" hidden>
+    <h2 id="t-lojinha">A lojinha do Niet</h2>
+    <p class="intro">O que eu uso de verdade. Quer dizer… o que meu dono compra e eu aprovo.</p>
+    <ul class="produtos">
+      <li><a href="#" data-pendente="link de afiliado">
+        <span class="icone" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20c4-1 6-4 7-8s3-7 7-8"/><circle cx="19" cy="4" r="2"/><path d="M3 21l3-3"/></svg></span>
+        <span class="texto"><b>Guia reforçada</b><em>Pra ele fingir que me segura.</em></span>
+        <span class="loja">Ver →</span>
+      </a></li>
+      <li><a href="#" data-pendente="link de afiliado">
+        <span class="icone" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 9.5a2.5 2.5 0 1 1 3-3l5 5a2.5 2.5 0 1 1-3 3z"/><path d="M14.5 6.5a2.5 2.5 0 1 1 3 3M6.5 14.5a2.5 2.5 0 1 0 3 3"/></svg></span>
+        <span class="texto"><b>Petisco de adestramento</b><em>O verdadeiro professor da aula.</em></span>
+        <span class="loja">Ver →</span>
+      </a></li>
+      <li><a href="#" data-pendente="link de afiliado">
+        <span class="icone" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><path d="M4.5 9.5c3 1 12 1 15 0M4.5 14.5c3-1 12-1 15 0"/></svg></span>
+        <span class="texto"><b>Brinquedo que aguenta pit</b><em>Durou dois dias. É o recorde.</em></span>
+        <span class="loja">Ver →</span>
+      </a></li>
+      <li><a href="#" data-pendente="link de afiliado">
+        <span class="icone" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 17h18M4 17V9a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8M7 12h10"/></svg></span>
+        <span class="texto"><b>Cama grandona</b><em>Que eu divido com o sofá. E com a cama dele.</em></span>
+        <span class="loja">Ver →</span>
+      </a></li>
+    </ul>
+    <p class="aviso-afiliado">Links de afiliado: se tu comprar por eles, o Niet ganha uma comissão e tu não paga nada a mais.</p>
+  </section>
+
+  <!-- 4. Parcerias -->
+  <section class="bloco" aria-labelledby="t-parcerias">
+    <h2 id="t-parcerias">Quer o Niet na tua marca?</h2>
+    <p class="intro">Humor que roda no orgânico: 18 mil visualizações num dia, sem um real de anúncio. Bora pensar algo junto.</p>
+    <div class="botoes">
+      <a class="botao cheio" href="https://ig.me/m/amordeniet">Falar sobre parceria no direct</a>
+    </div>
+  </section>
+
+  <footer>
+    <img src="img/amordecao-lockup-creme.svg" alt="Amor de Cão">
+    <p>O Niet é da família Amor de Cão.</p>
+    <p class="pequeno">© 2026 Amor de Cão</p>
+  </footer>
+
+</main>
+
+<script>
+  // Vídeo da chamada: a capa com play some e o vídeo toca com som.
+  (function () {
+    var caixa = document.getElementById('chamada');
+    var video = caixa.querySelector('video');
+    var tocar = caixa.querySelector('.tocar');
+    video.controls = false;
+    tocar.addEventListener('click', function () {
+      caixa.classList.add('tocando');
+      video.controls = true;
+      video.play();
+    });
+  })();
+
+  // Na prévia, os links ainda sem destino avisam em vez de abrir.
+  document.querySelectorAll('a[data-pendente]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      // link ainda sem destino (lojinha escondida): não faz nada
+    });
+  });
+</script>
+</body>
+</html>
